@@ -17,5 +17,3 @@ class RatingSerializer(serializers.ModelSerializer):
         if value < 1 or value > 5:
             raise serializers.ValidationError("Score must be between 1 and 5.")
         return value
-
-    def
