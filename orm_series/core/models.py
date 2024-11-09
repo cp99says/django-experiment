@@ -15,7 +15,6 @@ class Restaurant(models.Model):
         OPEN = 'O', 'Open'
         CLOSED = 'C', 'Closed'
 
-
     name = models.CharField(max_length=100)
     website = models.URLField(max_length=100, default='')
     date_opened = models.DateField()
@@ -32,6 +31,15 @@ class Restaurant(models.Model):
     class Meta:
         ordering = ['-date_opened']
         indexes = [models.Index(fields=['date_opened', 'name'])]
+
+class MenuItems(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.FloatField()
+
+class RestaurantItems(models.Model):
+    restaurant =models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    item = models.ForeignKey(MenuItems,on_delete=models.CASCADE)
+
 
 
 class Rating(models.Model):

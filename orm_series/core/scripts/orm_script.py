@@ -10,9 +10,9 @@ def run():
     print(restaurant.exists())
     print(restaurant.sales.filter(income__gt=100).values('income', 'restaurant__name'))
     user = User.objects.get(id=1)
-    rating, created = Sale.objects.get_or_create(restaurant=restaurant, income=41, datetime=datetime.now())
-    for data in restaurant:
-        print(data.name)
-    print(created)
-    print(rating)
-
+    # rating, created = Sale.objects.get_or_create(restaurant=restaurant, income=41, datetime=datetime.now())
+    # for data in restaurant:
+    #     print(data.name)
+    # print(created)
+    # print(rating)
+    Restaurant.objects.filter(id__in=[6,7,8,9,10]).delete()
